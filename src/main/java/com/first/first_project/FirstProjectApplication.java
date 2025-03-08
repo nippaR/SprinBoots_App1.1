@@ -26,6 +26,7 @@ public class FirstProjectApplication {
 	public String helloEndPoint(@RequestParam(value = "name", defaultValue = "World") String name) {
 		String message = "Hello " + name + "!";
 		return message;
+	
 	}
 	
 }
