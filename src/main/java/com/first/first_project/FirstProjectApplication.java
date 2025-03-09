@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -27,6 +28,22 @@ public class FirstProjectApplication {
 		String message = "Hello " + name + "!";
 		return message;
 	
+	}
+
+	@GetMapping("/greet/{name}/{message}")
+	public String greetEndPoint(@PathVariable String name, @RequestParam(required = false) String message) {
+		if (message != null && !message.isEmpty()) {
+			return "Hello " + name + " " + message;	
+		}
+		String responseMessage = "Hello " + name + message;
+		return responseMessage;
+	}
+	
+
+	@GetMapping("/greet/{name}")
+	public String greetEndOne(@PathVariable String name) {
+		String message = "Hello " + name + "! Welcome to Spring Boot!";
+		return message;
 	}
 	
 }
